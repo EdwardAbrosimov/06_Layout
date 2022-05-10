@@ -46,7 +46,21 @@ class _MyHomePageState extends State<MyHomePage> {
                 return Container(
                   height: 50,
                   color: Colors.purple.withOpacity(index / listData.length),
-                  child: Center(child: Text('Item $index')),
+                  child: Center(
+                      child: Stack(
+                    children: <Widget>[
+                      Text('$index',
+                          style: TextStyle(
+                              color: Colors.black87
+                                  .withOpacity((100 - index) / 100))),
+                      Text(
+                        '$index',
+                        style: TextStyle(
+                            color: Colors.white
+                                .withOpacity(1 - (100 - index) / 100)),
+                      )
+                    ],
+                  )),
                 );
               },
               separatorBuilder: (BuildContext context, int index) =>
