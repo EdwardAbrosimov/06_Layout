@@ -26,22 +26,27 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-fakeData(int count) => List<Widget>.generate(count, (index) {
-      return SizedBox(
-          height: 50,
-          width: 50,
-          child: Card(
-            borderOnForeground: true,
-            color: Colors.amberAccent,
-            child: Center(
-              child: Text('$index'),
-            ),
-          ));
-    });
-
-final _listData = fakeData(100);
+class _DataCard extends StatelessWidget {
+  const _DataCard({Key? key, required this.index}) : super(key: key);
+  final int index;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+        height: 50,
+        width: 50,
+        child: Card(
+          borderOnForeground: true,
+          color: Colors.amberAccent,
+          child: Center(
+            child: Text(index.toString()),
+          ),
+        ));
+  }
+}
 
 class _MyHomePageState extends State<MyHomePage> {
+  final _listData =
+      List<Widget>.generate(7, (index) => _DataCard(index: index));
   @override
   Widget build(BuildContext context) {
     return SafeArea(
